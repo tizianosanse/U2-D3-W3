@@ -32,22 +32,35 @@ const fetchLibrary = () => {
 
       library.forEach((book) => {
         const col = document.createElement("div");
+
         col.classList.add("col-6");
         col.classList.add("col-md-4");
         col.classList.add("col-lg-2");
         const card = document.createElement("div");
         card.classList.add("card");
+        card.classList.add("mb-5");
+
+        const remove = document.createElement("button");
+        remove.classList.add("btn");
+        remove.classList.add("btn-danger");
+
+        remove.innerHTML = "Remove";
 
         card.innerHTML = `
-                <img src=${book.img} class="card-img-top" alt="...">
+         <img src=${book.img} class="card-img-top" alt="...">
                 <div class="card-body">
                     <p class="card-text">${book.title}</p>
-                    <h5 class="card-title">Price: ${book.price}€</h5>
-                    <button id='remove' type="button"  class="btn btn-danger">Remove</button>    
-                </div>`;
+                    <h5 class="card-title">Price: ${book.price}€</h5>   
+                </div> `;
+        card.appendChild(remove);
 
         col.appendChild(card);
+
         row.appendChild(col);
+        remove.addEventListener("click", (event) => {
+          event.preventDefault();
+          col.remove();
+        });
       });
     })
     .catch((error) => console.log(error));
