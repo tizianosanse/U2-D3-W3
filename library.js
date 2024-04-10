@@ -43,6 +43,7 @@ const fetchLibrary = () => {
                 <div class="card-body">
                     <p class="card-text">${book.title}</p>
                     <h5 class="card-title">Price: ${book.price}€</h5>
+                    <button id='remove' type="button"  class="btn btn-danger">Remove</button>    
                 </div>`;
 
         col.appendChild(card);
